@@ -7,6 +7,7 @@ from scipy.misc import imsave
 import os
 from scipy.misc import imread
 from scipy.misc import imresize
+import numpy as np
 
 X_LOC = [146, 212]
 Y_LOC = [1232, 1308]
@@ -48,7 +49,16 @@ def remove_full_screenshots(data_dir):
 		if 'cropped' not in f and '.DS' not in f:
 			os.remove(os.path.join(data_dir, f))
 
+def fix_im_dimensions(data_dir):
+	im_list = os.listdir(data_dir)
+	for im in im_list:
+		img = imread(os.path.join(data_dir, im))
+		# img = img[:, :, 0]
+		img = np.invert(img)
+		imsave(os.path.join(data_dir, im), img)
+
 if __name__ == '__main__':
 	# save_letters()
-	crop_letters('data')
+	# crop_letters('data')
 	remove_full_screenshots('data')
+	# fix_im_dimensions('data/letters')
