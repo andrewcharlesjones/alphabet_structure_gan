@@ -60,5 +60,5 @@ def fix_im_dimensions(data_dir):
 if __name__ == '__main__':
 	# save_letters()
 	# crop_letters('data')
-	remove_full_screenshots('data')
-	# fix_im_dimensions('data/letters')
+	# remove_full_screenshots('data')
+	fix_im_dimensions('data/letters')

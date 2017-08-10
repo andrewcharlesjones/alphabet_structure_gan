@@ -10,6 +10,8 @@ from six.moves import xrange
 from ops import *
 from utils import *
 
+import matplotlib.pyplot as plt
+
 def conv_out_size_same(size, stride):
   return int(math.ceil(float(size) / float(stride)))
 
@@ -177,7 +179,13 @@ class DCGAN(object):
         sample_inputs = np.array(sample).astype(np.float32)[:, :, :, None]
       else:
         sample_inputs = np.array(sample).astype(np.float32)
-  
+
+    # for i in range(sample_inputs.shape[0]):
+    #   plt.subplot(2, 13, i)
+    #   plt.imshow(sample_inputs[i, :, :, 0], cmap='Greys')
+    # plt.show()
+    # import ipdb; ipdb.set_trace()
+
     counter = 1
     start_time = time.time()
     could_load, checkpoint_counter = self.load(self.checkpoint_dir)
